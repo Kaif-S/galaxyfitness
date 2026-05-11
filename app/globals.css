@@ -4,6 +4,9 @@
   --color-secondary:#060761;
   --color-primary:#41FFA7;
   --color-background:#000006;
+  --font-bricolage-grotesque:"Bricolage Grotesque", sans-serif;
+  --font-oswald:"Oswald", sans-serif;
+  --font-figtree:"Figtree",sans-serif;
 }
 
 .listitem-nav{
