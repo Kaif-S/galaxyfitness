@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolageGrotesque.variable} ${oswald.variable} ${figtree.variable} h-full antialiased`}
+      className={`${bricolageGrotesque.variable} ${oswald.variable} ${figtree.variable} bg-background h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
