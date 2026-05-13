@@ -33,10 +33,11 @@ export default function ScrollCards() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[350vh]"
+      className="relative"
+      style={{ height: `${cards.length * 100}svh` }}
     >
       {/* Sticky Container */}
-      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden">
         {cards.map((card, index) => (
           <Card key={index} card={card} index={index} scrollYProgress={scrollYProgress} />
         ))}
@@ -45,7 +46,7 @@ export default function ScrollCards() {
   );
 }
 
-function Card({ card, index, scrollYProgress }: { card: typeof cards[0]; index: number; scrollYProgress: any }) {
+function Card({ card, index, scrollYProgress }: { card: typeof cards[0]; index: number; scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
   const sectionStart = 0.15; // delay before first card
 const availableRange = 1 - sectionStart;
 
@@ -79,7 +80,7 @@ const end =
   return (
     <motion.div
       style={{ opacity, y, scale }}
-      className="absolute flex w-[90%] max-w-2xl flex-col items-center rounded-3xl border border-primary/20 bg-white/10 p-10 text-center -translate-y-10 backdrop-blur-md"
+      className="absolute z-10 transform-gpu flex w-[90%] max-w-2xl flex-col items-center rounded-3xl border border-primary/20 bg-white/10 p-10 text-center -translate-y-10 backdrop-blur-md"
     >
       <h2 className="mb-4 text-5xl font-bold text-primary">
         {card.title}
