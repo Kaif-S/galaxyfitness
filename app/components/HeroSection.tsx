@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <section className='relative h-[80vh] w-full'>
       <div
-        className="absolute inset-0 bg-cover bg-center h-[100%] before:content-[''] before:absolute before:inset-0 before:bg-black/70"
+        className="absolute inset-0 bg-cover bg-center h-[75vh] before:content-[''] before:absolute before:inset-0 before:bg-black/70"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop')",
