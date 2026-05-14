@@ -34,7 +34,7 @@ export default function ScrollCards() {
     <section
       ref={containerRef}
       className="relative"
-      style={{ height: `${cards.length * 100}svh` }}
+      style={{ height: `${(cards.length * 100) + 150}svh` }}
     >
       {/* Sticky Container */}
       <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden">
