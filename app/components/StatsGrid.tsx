@@ -1,94 +1,49 @@
-"use client";
+"use client"
+import { motion } from 'framer-motion';
+import { Dumbbell , User , CalendarCog, ShieldCheck ,  } from 'lucide-react';
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import React from 'react'
+
 
 const cards = [
   {
     title: "500+ Active Members",
     desc: "A growing community pushing limits every day.",
+    icon:<User className='size-24 text-primary'/>
   },
   {
     title: "20+ Professional Machines",
     desc: "Modern equipment for strength and endurance.",
+    icon:<Dumbbell className='size-24 text-primary'/>
   },
   {
     title: "Certified Trainers",
     desc: "Expert guidance to maximize your results.",
+    icon:<ShieldCheck className='size-24 text-primary'/>
   },
   {
     title: "Custom Workout Plans",
     desc: "Programs tailored to your fitness goals.",
+    icon:<CalendarCog className='size-24 text-primary'/>
   },
 ];
 
-export default function ScrollCards() {
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
+const StatsGrid = () => {
   return (
-    <section
-      ref={containerRef}
-      className="relative"
-      style={{ height: `${(cards.length * 100) + 150}svh` }}
-    >
-      {/* Sticky Container */}
-      <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden">
-        {cards.map((card, index) => (
-          <Card key={index} card={card} index={index} scrollYProgress={scrollYProgress} />
-        ))}
-      </div>
-    </section>
-  );
+    <div className='grid lg:h-[60vh] grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-10 lg:mx-28 gap-8 lg:gap-4 my-12'>
+      {cards.map((card, index) => (
+        <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.2, type:"spring" }}
+        key={index} className="bg-white/10 backdrop-blur-md rounded-3xl h-full flex items-center flex-col justify-center gap-5 p-6 text-center border border-primary/20">
+          {card.icon}
+          <h2 className="text-2xl font-bold text-primary mb-2">{card.title}</h2>
+          <p className="text-white/80">{card.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  )
 }
 
-function Card({ card, index, scrollYProgress }: { card: typeof cards[0]; index: number; scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
-  const sectionStart = 0.15; // delay before first card
-const availableRange = 1 - sectionStart;
-
-const start =
-  sectionStart + (index / cards.length) * availableRange;
-
-const end =
-  sectionStart +
-  ((index + 1) / cards.length) * availableRange;
-
-  // Fade In
-  const opacity = useTransform(
-    scrollYProgress,
-    [start, start + 0.1, end - 0.1, end],
-    [0, 1, 1, 0]
-  );
-
-  // Slight movement
-  const y = useTransform(
-    scrollYProgress,
-    [start, end],
-    [50, -50]
-  );
-
-  const scale = useTransform(
-  scrollYProgress,
-  [start, start + 0.2],
-  [0.8, 1]
-);
-
-  return (
-    <motion.div
-      style={{ opacity, y, scale }}
-      className="absolute z-10 transform-gpu flex w-[90%] max-w-2xl flex-col items-center rounded-3xl border border-primary/20 bg-white/10 p-10 text-center -translate-y-10 backdrop-blur-md"
-    >
-      <h2 className="mb-4 text-5xl font-bold text-primary">
-        {card.title}
-      </h2>
-
-      <p className="text-lg text-white/80">
-        {card.desc}
-      </p>
-    </motion.div>
-  );
-}
+export default StatsGrid
