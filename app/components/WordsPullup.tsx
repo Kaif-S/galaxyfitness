@@ -1,5 +1,5 @@
 "use client"
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 import * as React from 'react';
  
 export function WordsPullUp({
@@ -22,7 +22,7 @@ export function WordsPullUp({
     }),
   };
   const ref = React.useRef(null);
-  const isInView = useInView(ref,);
+  const isInView = useInView(ref,{once:true});
   return (
     <div className="flex lg:gap-3 md:gap-2 gap-1">
       {splittedText.map((current, i) => (

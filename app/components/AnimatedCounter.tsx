@@ -1,6 +1,6 @@
 "use client"
 import React, {useRef}from 'react'
-import { animate, useInView, useIsomorphicLayoutEffect , type AnimationOptions } from 'framer-motion'
+import { animate, useInView, useIsomorphicLayoutEffect , type AnimationOptions } from 'motion/react'
 
 interface AnimateCounterProps{
     from:number,
@@ -11,7 +11,7 @@ interface AnimateCounterProps{
 
 const AnimateCounter = ({from,to,animationOptions,tofixVal=0}:AnimateCounterProps) => {
     const ref = useRef<HTMLSpanElement | null>(null);
-    const inView = useInView(ref)
+    const inView = useInView(ref,{once:true})
 
     useIsomorphicLayoutEffect(()=>{{
         const element = ref.current;
