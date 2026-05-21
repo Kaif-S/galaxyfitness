@@ -43,10 +43,10 @@ const Testimonial = () => {
 
 
   return (
-    <div className="container flex h-[55%] relative justify-center items-center">
-      <div className="absolute inset-0 flex justify-between items-center h-full">
-        <ArrowLeft className="size-16 text-primary bg-secondary p-4 rounded-full mx-28 hover:scale-110 active:scale-95  transition-all" onClick={prev}/>
-        <ArrowRight className="size-16 text-primary bg-secondary p-4 rounded-full mx-28 hover:scale-110 active:scale-95  transition-all" onClick={next}/>
+    <div className="container flex lg:h-[55%] h-1/3 relative justify-center items-center">
+      <div className="absolute inset-0 w-full hidden md:flex justify-between items-center h-full">
+        <ArrowLeft className="size-16 text-primary p-4 rounded-full lg:mx-10 hover:scale-110 active:scale-95  transition-all" onClick={prev}/>
+        <ArrowRight className="size-16 text-primary p-4 rounded-full lg:mx-10 hover:scale-110 active:scale-95  transition-all" onClick={next}/>
       </div>
       <AnimatePresence mode="wait">
       {CardData.map((txt, index) => {
@@ -70,9 +70,9 @@ const Testimonial = () => {
                 type:"spring"
               }}
               key={index}
-              className="p-6 rounded-lg shadow-md absolute text-center max-w-[30%] w-xl bg-primary"
+              className="p-6 rounded-lg shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center lg:max-w-[30%] md:w-xl w-[90%] bg-primary"
             >
-              <p className="text-2xl font-bricolage-grotesque italic font-bold text-secondary">
+              <p className="lg:text-2xl md:test-xl text-lg font-bricolage-grotesque italic font-bold text-secondary">
                 &#34;{txt.text}&#34;
               </p>
             </motion.div>

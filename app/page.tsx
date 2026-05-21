@@ -3,12 +3,12 @@ import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import AnimatedCards from "./components/AnimatedCards";
 import Testimonial from "./components/Testimonial";
+import Footer from "./components/Footer";
 
 export default function Home() {
   
   return (
     <main className="h-screen">
-      <Navbar/>
       <HeroSection/>
       <h2 className="text-primary lg:text-6xl text-4xl font-bold font-oswald text-center mt-8">Our Strength in Numbers 💪</h2>
       <StatsGrid/>
@@ -16,6 +16,7 @@ export default function Home() {
       <AnimatedCards/>
       <h1 className="text-primary lg:text-6xl text-4xl font-bold font-oswald text-center mt-8">Testimonials 💭</h1>
       <Testimonial/>
+      <Footer></Footer>
     </main>
   );
 }

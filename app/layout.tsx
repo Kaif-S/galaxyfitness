@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque , Oswald , Figtree} from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 export const metadata: Metadata = {
   title: "Galaxy fitness",
@@ -34,7 +36,10 @@ export default function RootLayout({
       lang="en"
       className={`${bricolageGrotesque.variable} ${oswald.variable} ${figtree.variable} bg-background h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+      <Navbar/>
+      {children}
+      </body>
     </html>
   );
 }
